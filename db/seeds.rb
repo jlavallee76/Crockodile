@@ -8,3 +8,23 @@
 #
 #   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
 #   Character.create(name: 'Luke', movie: movies.first)
+
+# 676.times do
+#   Product.create(name:           Faker::Commerce.unique.product_name,
+#                  price:          Faker::Commerce.price,
+#                  stock_quantity: Faker::Number.number(digits: 2))
+# end
+
+# Use this Faker for generating categories
+# Faker::Restaurant.type
+
+require "csv"
+
+Product.destroy_all
+# Category.destroy.all
+
+100.times do
+  Product.create(name:        Faker::Food.dish,
+                 description: Faker::Food.description,
+                 price:       Faker::Number.decimal(l_digits: 2))
+end
