@@ -1,17 +1,24 @@
 <!-- Header   -->
-<div class="bg-green-600 p-4 flex justify-between items-center">
+<div class="bg-green-800 p-4 flex justify-between items-center">
   <!-- Left Side Nav -->
   <div class="flex items-center">
-    <img src="https://cdn4.iconfinder.com/data/icons/zoo-line-welcome-to-zootopia/512/crocodile-512.png" width="75" alt="Logo" class="mx-5">
-    <a href="<%= root_path %>" class="text-lg font-semibold inline-block p-2 mr-2 text-gray-50 hover:text-green-400">Home</a>
-    <a href="#" class="text-lg font-semibold inline-block p-2 mr-2 text-gray-50 hover:text-green-400">Meals</a>
-    <a href="#" class="text-lg font-semibold inline-block p-2 mr-2 text-gray-50 hover:text-green-400">About</a>
-    <a href="#" class="text-lg font-semibold inline-block p-2 mr-2 text-gray-50 hover:text-green-400">Contact</a>
+    <img src="https://s3.amazonaws.com/iconbros/icons/icon_pngs/000/007/657/original/crocodile.png?1588432997" width="100" alt="Logo" class="ml-5 mr-8">
+    <a href="<%= root_path %>" class="text-lg font-semibold inline-block p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Home</a>
+    <a href="#" class="text-lg font-semibold inline-block p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Meals</a>
+    <a href="#" class="text-lg font-semibold inline-block p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">About</a>
+    <a href="#" class="text-lg font-semibold inline-block p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Contact</a>
   </div>
 
   <!-- Right Side Nav -->
   <div>
-    <a href="#" class="text-lg font-semibold inline-block p-2 mr-2 text-gray-50 hover:text-green-400">Login</a>
-    <a href="#" class="text-lg font-semibold inline-block py-2 px-4 bg-yellow-300 rounded hover:bg-yellow-400 transition ease-in duration-200">Sign Up</a>
+    <% if user_signed_in? %>
+      <%= link_to "Log Out", destroy_user_session_path,
+      method: :delete, class:"text-lg font-semibold inline-block p-2 mr-2 text-gray-50 hover:text-green-400" %>
+      <%= link_to 'Account', edit_user_registration_path, class: "text-lg font-semibold inline-block py-2 px-4 bg-yellow-300 rounded hover:bg-yellow-400 transition ease-in duration-200" %>
+    <% else %>
+      <%= link_to "Sign In", new_user_session_path, class:"text-lg font-semibold inline-block p-2 mr-2 text-gray-50 hover:text-green-400" %>
+
+      <%= link_to "Sign up", new_user_registration_path, class:"text-lg font-semibold inline-block py-2 px-4 bg-yellow-300 rounded hover:bg-yellow-400 transition ease-in duration-200"%>
+    <% end %>
   </div>
 </div>
