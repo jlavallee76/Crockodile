@@ -1,33 +1,61 @@
 <p id="notice"><%= notice %></p>
 
-<h1>Products</h1>
+<div class="md:flex justify-between py-20 px-10 bg-yellow-300">
+  <!-- Left Side Hero -->
+  <div class="md:w-1/2 mb-10 md:mb-0">
+    <h2 class="lg:text-6xl md:text-5xl mb-6">Meals</h2>
+    <p class="mb-6 text-xl">A description about the products available on this page</p>
 
-<table>
-  <thead>
-    <tr>
-      <th>Name</th>
-      <th>Description</th>
-      <th>Price</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+    <a href="#" class="inline-block py-3 px-6 text-lg text-gray-50 font-semibold bg-green-800 hover:bg-green-600 transition ease-in duration-200 rounded mr-3">Learn More</a>
+  </div>
+</div>
 
-  <tbody>
-    <% @products.each do |product| %>
-      <tr>
-        <td><%= product.name %></td>
-        <td><%= product.description %></td>
-        <td><%= product.price %></td>
-        <td><%= link_to 'Show', product %></td>
-        <td><%= link_to 'Edit', edit_product_path(product) %></td>
-        <td><%= link_to 'Destroy', product, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+<div class="container my-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap -mx-1 lg:-mx-4">
+        <% @products.each do |product| %>
+        <!-- Column -->
+        <div class="my-1 px-1 w-full flex-col md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
 
-<br>
+            <!-- Article -->
+            <article class="flex flex-col overflow-hidden rounded-lg shadow-lg border-4 border-green-800 bg-green-800 h-full">
 
-<%= link_to 'New Product', new_product_path %>
+                <a href="#">
+                    <img alt="Placeholder" class="block h-auto w-full" src="https://picsum.photos/600/400/?random">
+                </a>
+
+                <header class="flex items-center justify-between leading-tight px-4 pt-2 md:px-4">
+                    <h1 class="text-lg">
+                        <a class="no-underline hover:underline" href="#">
+                          <%= link_to product.name, product, class:"text-lg font-bold text-yellow-400 inline-block hover:text-green-500 transition ease-in duration-200"%>
+                        </a>
+                    </h1>
+                    <p class="text-grey-darker text-md italic font-bold text-yellow-400">
+                        <%= product.price %>
+                    </p>
+                </header>
+
+                <p class="py-2 px-4 pt-2 md:px-4 mb-auto "><%= product.description %></p>
+
+                <footer class="flex items-center justify-between leading-none mt-2 p-2 md:p-4 border-t-4 border-yellow-400">
+                    <a class="flex items-center no-underline hover:underline text-black" href="#">
+                        <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                        <p class="ml-2 text-md text-black font-semibold">
+                            The Category
+                        </p>
+                    </a>
+                    <%= link_to "Add To Cart", new_user_registration_path, class:"text-lg font-semibold inline-block py-2 px-4 bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200"%>
+                </footer>
+
+                <%# <div class="flex justify-evenly m-4 pt-4 border-t-4 border-yellow-400">
+                    <%= link_to "Details", product, class:"text-lg font-semibold inline-block py-2 px-2 bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200"%>
+
+            </article>
+            <!-- END Article -->
+
+        </div>
+        <!-- END Column -->
+        <% end %>
+    </div>
+</div>
 
 
