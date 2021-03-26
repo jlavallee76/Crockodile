@@ -13,20 +13,21 @@
                       input_html: { autocomplete: "email",
                                     class: "block border border-grey-light focus:border-green-800 w-full p-3 rounded mb-4",
                                     placeholder: "Email" }%>
+
           <%= f.input :password,
                       required: true,
                       label: false,
                       hint: ("#{@minimum_password_length} characters minimum" if @minimum_password_length),
-                      input_html: { autocomplete: "new-password"
+                      input_html: { autocomplete: "new-password",
                                     class: "block border border-grey-light focus:border-green-800 w-full p-3 rounded mb-4",
-                                    placeholder: "Password" } %
+                                    placeholder: "Password" } %>
+
           <%= f.input :password_confirmation,
                       required: true,
                       label: false,
                       input_html: { autocomplete: "new-password",
                                     class: "block border border-grey-light focus:border-green-800 w-full p-3 rounded mb-4",
                                     placeholder: "Confirm Password" } %>
-
           <button type="submit" class="w-full p-3 rounded bg-green-800 font-semibold text-white hover:bg-green-600">Create Account</button>
 
             <div class="text-center text-sm text-grey-dark mt-4">
