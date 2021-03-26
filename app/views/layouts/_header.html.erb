@@ -1,8 +1,8 @@
 <!-- Header   -->
 <div class="bg-green-800 p-4 flex justify-between items-center">
   <!-- Left Side Nav -->
-  <div class="flex items-center">
-    <%= image_tag("logo_yellow.png", width: 125) %>
+  <div class="flex items-center ml-16">
+    <%= image_tag("logo_yellow.png", width: 125, alt:"logo") %>
     <%# <img src="/images/logo_yellow.png" width="100" alt="Logo" class="ml-5 mr-8"> %>
 
     <a href="<%= root_path %>" class="text-lg font-semibold inline-block ml-6 p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Home</a>
@@ -12,7 +12,7 @@
   </div>
 
   <!-- Right Side Nav -->
-  <div>
+  <div class="mr-16">
     <% if user_signed_in? %>
       <%= link_to "Log Out", destroy_user_session_path,
       method: :delete, class:"text-lg font-semibold inline-block p-2 mr-2 text-gray-50 hover:text-green-400" %>
