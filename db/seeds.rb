@@ -28,3 +28,4 @@ Product.destroy_all
                  description: Faker::Food.description,
                  price:       Faker::Number.decimal(l_digits: 2))
 end
+AdminUser.create!(email: 'admin@example.com', password: 'password', password_confirmation: 'password') if Rails.env.development?
