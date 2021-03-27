@@ -5,7 +5,7 @@
     <h2 class="lg:text-6xl md:text-5xl mb-6">Welcome to Crockodile!</h2>
     <p class="mb-6 ml-2 text-xl">A description about the company / tag line</p>
 
-    <a href="#" class="inline-block py-3 px-6 text-lg text-gray-50 font-semibold bg-green-800 hover:bg-green-600 transition ease-in duration-200 rounded">Get Started</a>
+    <%= link_to "Get Started", new_user_registration_path, class:"inline-block py-3 px-6 text-lg text-gray-50 font-semibold bg-green-800 hover:bg-green-600 transition ease-in duration-200 rounded"%>
     <a href="#" class="inline-block py-3 px-6 text-lg text-gray-50 font-semibold bg-green-800 hover:bg-green-600 transition ease-in duration-200 rounded mr-3">Learn More</a>
   </div>
 
@@ -16,21 +16,15 @@
 </div>
 
 <!-- Featured Product -->
-<div class="md:flex py-16 px-10 bg-green-600 text-gray-50 font-semibold text-center">
-  <div class="mr-2 text-center">
-    <img src="https://images.unsplash.com/photo-1613552496394-4e4b3f074e4f?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1368&q=80" alt="Meal" class="w-full rounded border-solid border-2 border-yellow-400 mb-4">
-    <p class="inline-block p-2 mr-2">Delicious</p>
+<div class="md:flex justify-between py-20 px-10 bg-green-600 text-gray-50 font-semibold">
+<%= render "products/product_card" %>
+  <!-- Left Side Hero -->
+  <div class="md:w-1/6 mb-10 md:mb-0">
+    <h2 class="lg:text-6xl md:text-5xl ml-3 mb-6">Featured Meals</h2>
+    <%= link_to "See More", products_path, class:"inline-block py-3 px-6 ml-3 text-lg text-black font-semibold bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200" %>
   </div>
-  <div class="mr-2 text-center">
-    <img src="https://images.unsplash.com/photo-1607170286712-3b20563630e4?ixid=MXwxMjA3fDB8MHxzZWFyY2h8MTV8fHNsb3clMjBjb29rZXIlMjBtZWFsfGVufDB8fDB8&ixlib=rb-1.2.1&auto=format&fit=crop&w=700&q=60" alt="Meal" class="w-full rounded border-solid border-2 border-yellow-400 mb-4">
-    <p class="inline-block p-2 mr-2">Easy</p>
-  </div>
-  <div class="mr-2 text-center">
-    <img src="https://images.unsplash.com/photo-1607492701914-4b00ed15ec94?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1234&q=80" alt="Meal" class="w-full rounded border-solid border-2 border-yellow-400 mb-4">
-    <p class="inline-block p-2 mr-2">Delicious</p>
-  </div>
-  <div class="mr-2 text-center">
-    <img src="https://images.unsplash.com/photo-1584509171119-9054d2d7d9a7?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=1350&q=80" alt="Meal" class="w-full rounded border-solid border-2 border-yellow-400 mb-4">
-    <p class="inline-block p-2 mr-2">Easy</p>
-  </div>
+  <!-- Left Side Hero -->
+  <%# <div class="md:w-1/4">
+    <img src="https://images.unsplash.com/photo-1583403608431-dd0e30a78961?ixid=MXwxMjA3fDB8MHxwaG90by1wYWdlfHx8fGVufDB8fHw%3D&ixlib=rb-1.2.1&auto=format&fit=crop&w=2467&q=80" alt="Example Meal" class="w-full rounded shadow-lg">
+  </div> %>
 </div>

@@ -1,3 +1,5 @@
 class HomeController < ApplicationController
-  def main; end
+  def main
+    @products = Product.limit(3)
+  end
 end
