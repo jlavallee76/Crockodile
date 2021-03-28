@@ -1,7 +1,8 @@
 Rails.application.routes.draw do
   devise_for :admin_users, ActiveAdmin::Devise.config
   ActiveAdmin.routes(self)
-  resources :products
+  resources :products, only: %i[index show]
+  resources :cart, only: %i[create destroy]
 
   devise_for :users, controllers: {
     registrations: "registrations"
