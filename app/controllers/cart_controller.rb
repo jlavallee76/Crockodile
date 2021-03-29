@@ -1,4 +1,8 @@
 class CartController < ApplicationController
+  def show
+    @order_items = current_order.order_items
+  end
+
   def create
     # Take in a params[:id] and add that product id to the session cart
     logger.debug("Adding #{params[:id]} to the shopping cart!")

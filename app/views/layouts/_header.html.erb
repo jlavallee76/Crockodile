@@ -3,7 +3,6 @@
   <!-- Left Side Nav -->
   <div class="flex items-center ml-16">
     <%= link_to image_tag("logo_yellow.png", width: 125, alt:"logo"), root_path, class: "transition ease-in hover:opacity-75 duration-200"   %>
-    <%# <img src="/images/logo_yellow.png" width="100" alt="Logo" class="ml-5 mr-8"> %>
 
     <a href="<%= root_path %>" class="text-lg font-semibold inline-block ml-6 p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Home</a>
     <a href="<%= products_path %>" class="text-lg font-semibold inline-block p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Meals</a>
@@ -26,15 +25,11 @@
 
       <ul class="flex items-center">
         <li class="flex ml-4 text-yellow-400 font-bold">
-          Cart
+          <%= link_to image_tag("cart_icon.png", width: 32, alt:"logo"), root_path, class: "transition ease-in hover:opacity-75 duration-200 ml-6"   %>
           <% if cart.present? %>
-            <sup class="rounded-full ml-1 h-6 w-6 flex items-center justify-center text-green-800 bg-yellow-400 font-bold"><%= cart.size %></sup>
+            <sup class="rounded-full h-4 w-4 flex items-center justify-center text-green-800 bg-yellow-400 font-bold"><%= cart.size %></sup>
             <ul>
-              <% cart.each do |product| %>
-                <li>
-                  <%= product.name %> <%= link_to '➖', cart_path(product), method: :delete %>
-                </li>
-              <% end %>
+
             </ul>
           <% end %>
         </li>

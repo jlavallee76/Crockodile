@@ -1,5 +1,9 @@
 <p id="notice"><%= notice %></p>
 
-<%= render @product %>
+<div class="container justify-items-center my-12 mx-auto px-4 md:px-12">
+    <div class="flex flex-wrap justify-items-center mx-1 lg:-mx-4">
+        <%= render @product %>
+    </div>
+</div>
 
 <%= link_to 'Back', products_path %>
