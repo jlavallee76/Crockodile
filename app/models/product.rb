@@ -1,4 +1,6 @@
 class Product < ApplicationRecord
+  belongs_to :category
+
   validates :name, :price, :description, presence: true
   validates :name,
             length: { maximum: 100, too_long: "%{count} characters is the maximum allowed" }

@@ -23,11 +23,31 @@ require "csv"
 Product.destroy_all
 # Category.destroy.all
 
-100.times do
-  Product.create(name:        Faker::Food.dish,
-                 description: Faker::Food.description,
-                 price:       Faker::Number.decimal(l_digits: 2))
+Category.create!(heading: "Soup",
+                 body:    Faker::Food.description,
+                 display: true)
+
+Category.create!(heading: "Dessert",
+                 body:    Faker::Food.description,
+                 display: true)
+
+Category.create!(heading: "Apetizer",
+                 body:    Faker::Food.description,
+                 display: true)
+
+Category.create!(heading: "Dinner",
+                 body:    Faker::Food.description,
+                 display: true)
+
+Category.each do |category|
+  25.times do
+    Product.create(name:        Faker::Food.dish,
+                   description: Faker::Food.description,
+                   price:       Faker::Number.decimal(l_digits: 2),
+                   category:    category.category_id)
+  end
 end
+
 if Rails.env.development?
   AdminUser.create!(email: "admin@example.com", password: "password",
   password_confirmation: "password")
