@@ -21,7 +21,7 @@
 require "csv"
 
 Product.destroy_all
-# Category.destroy.all
+Category.destroy_all
 
 Category.create!(heading: "Soup",
                  body:    Faker::Food.description,
@@ -39,12 +39,19 @@ Category.create!(heading: "Dinner",
                  body:    Faker::Food.description,
                  display: true)
 
-Category.each do |category|
+Category.all.each do |category|
   25.times do
-    Product.create(name:        Faker::Food.dish,
-                   description: Faker::Food.description,
-                   price:       Faker::Number.decimal(l_digits: 2),
-                   category:    category.category_id)
+    product = Product.create(name:        Faker::Food.dish,
+                             description: Faker::Food.description,
+                             price:       Faker::Number.decimal(l_digits: 2),
+                             category:    category)
+
+    query = URI.encode_www_form_component([product.name, product.category.heading].join(","))
+    downloaded_image = URI.open("https://source.unsplash.com/600x600/?#{query}")
+    product.image.attach(io:       downloaded_image,
+                         filename: "m-#{[product.name, product.category.heading].join('-')}.jpg")
+
+    sleep(0.5)
   end
 end
 

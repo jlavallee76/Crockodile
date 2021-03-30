@@ -1,13 +1,14 @@
 Rails.application.routes.draw do
   resources :categories
-  root to: "home#main"
-  get "/products" => "products#index"
+  resources :order_items
 
-  get "order_item/create"
-  get "order_item/update"
-  get "order_item/destroy"
-  get "cart/show"
+  root to: "home#main"
+
+  get "/products" => "products#index"
+  get "cart", to: "cart#show"
+
   devise_for :admin_users, ActiveAdmin::Devise.config
+
   ActiveAdmin.routes(self)
   resources :products, only: %i[index show]
   resources :cart, only: %i[create destroy]

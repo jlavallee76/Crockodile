@@ -2,6 +2,7 @@ class HomeController < ApplicationController
   before_action :set_categories
   def main
     @products = Product.limit(4)
+    @order_item = current_order.order_items.new
   end
 
   def search
