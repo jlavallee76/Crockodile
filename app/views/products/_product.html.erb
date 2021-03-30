@@ -36,7 +36,7 @@
             <%else %>
                 <%= form_with model: @order_item do |f|%>
                     <%= f.hidden_field :product_id, value: product.id %>
-                    <%= f.number_field :quantity, value: 1, min: 1, class: "text-black" %>
+                    <%= f.hidden_field :quantity, value: 1 %>
                     <%= f.submit "Add", class: "text-lg font-bold text-green-800 inline-block py-2 px-4 bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200" %>
                 <% end %>
             <% end %>

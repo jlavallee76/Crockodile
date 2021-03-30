@@ -1,13 +1,23 @@
 <% @order_items.each do |item| %>
-  <h3><%= item.product.name %></h3>
-  <h3><%= item.product.price %></h3>
-  <%= form_with model: item do |f| %>
-    <%= f.hidden_field :product_id, value: item.product.id %>
-    <%= f.number_field :quantity, value: item.quantity.to_i %>
-    <%= f.submit "Update Cart" %>
-    <%= link_to "Remove Items", item, method: :delete, remote: true %>
-  <% end %>
-  <h2>Subtotal: <%= item.total %></h2>
+  <div class="flex items-center hover:bg-gray-100 -mx-8 px-6 py-5">
+    <div class="flex w-2/5"> <!-- product -->
+      <div class="w-20">
+         <%= image_tag item.product.image, class:"block h-24 w-full", alt: "Picture Of Meal" %>
+      </div>
+      <div class="flex flex-col justify-between ml-4 flex-grow">
+        <span class="font-bold text-sm"><%= item.product.name %></span>
+        <span class="text-xs">Item Category</span>
+        <%= link_to "Remove", item, method: :delete, remote: true, class: "font-semibold hover:text-red-300 text-red-500 text-xs" %>
+      </div>
+    </div>
+    <div class="flex w-1/5">
+      <%= form_with model: item do |f| %>
+        <%= f.hidden_field :product_id, value: item.product.id %>
+        <%= f.number_field :quantity, value: item.quantity.to_i %>
+        <%= f.submit "Update Cart", class: "flex font-semibold text-blue-800 hover:text-blue-500 text-xs ml-auto" %>
+      <% end %>
+    </div>
+    <span class="text-center w-1/5 font-semibold text-sm"><%= number_to_currency item.product.price %></span>
+    <span class="text-center w-1/5 font-semibold text-sm"><%= number_to_currency item.total %></span>
+  </div>
 <% end %>
-
-<h3>Your current order has a total of: <%= current_order.subtotal %></h3>
