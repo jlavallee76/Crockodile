@@ -26,12 +26,7 @@
       <ul class="flex items-center">
         <li class="flex ml-4 text-yellow-400 font-bold">
           <%= link_to image_tag("cart_icon.png", width: 32, alt:"logo"), cart_path, class: "transition ease-in hover:opacity-75 duration-200 ml-6"   %>
-          <% if cart.present? %>
-            <sup class="rounded-full h-4 w-4 flex items-center justify-center text-green-800 bg-yellow-400 font-bold"><%= cart.size %></sup>
-            <ul>
-
-            </ul>
-          <% end %>
+          <sup class="rounded-full h-4 w-4 flex items-center justify-center text-green-800 bg-yellow-400 font-bold"><%= session[:cart_size] %></sup>
         </li>
       </ul>
 
