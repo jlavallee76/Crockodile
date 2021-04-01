@@ -66,3 +66,5 @@ gem 'rubocop'
 gem 'rubocop-rails'
 gem 'faker'
 gem 'activeadmin'
+gem 'material_icons'
+

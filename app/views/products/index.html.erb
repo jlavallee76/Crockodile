@@ -9,25 +9,24 @@
 </div>
 
 <section class="bg-green-800 h-50">
-        <div class="container mx-auto py-8">
-          <input class="w-full h-16 rounded mb-8 focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg" type="search" placeholder="Search...">
-          <nav class="flex">
-            <a class="no-underline text-black front-semibold bg-yellow-300 py-3 px-4 mr-3 hover:bg-yellow-200 rounded-full" href="#">Available</a>
-            <a class="no-underline text-black front-semibold bg-yellow-300 py-3 px-4 mx-3 hover:bg-yellow-200 rounded-full" href="#">Gluten Free</a>
-            <a class="no-underline text-black front-semibold bg-yellow-300 py-3 px-4 mx-3 hover:bg-yellow-200 rounded-full" href="#">Kosher</a>
-            <a class="no-underline text-black front-semibold bg-yellow-300 py-3 px-4 mx-3 hover:bg-yellow-200 rounded-full" href="#">Vegan</a>
-            <a class="no-underline text-black front-semibold bg-yellow-300 py-3 px-4 mx-3 hover:bg-yellow-200 rounded-full" href="#">Vegitarian</a>
-            <a class="no-underline text-black front-semibold bg-yellow-300 py-3 px-4 mx-3 hover:bg-yellow-200 rounded-full"  href="#">Dairy Free</a>
-            <a class="no-underline text-black front-semibold bg-yellow-300 py-3 px-4 mx-3 hover:bg-yellow-200 rounded-full" href="#">Featured</a>
-            <a class="no-underline text-black front-semibold bg-yellow-400 py-3 px-4 ml-auto hover:bg-yellow-300 rounded-md" href="#">Clear</a>
-        </nav>
+    <div class="container mx-auto py-8">
+      <%= form_tag(search_path, method: "get", remote: true) do %>
+        <div class="flex mb-8">
+          <%= text_field_tag :search, '', class:"w-full h-16 rounded-l focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg", placeholder: "Search...", onkeydown: 'clickSubmit();' %>
+          <%= select_tag "filter", options_for_select(['Select Filter', 'Dairy Free', 'Gluten Free', 'Kosher', 'Vegan', 'Vegetarian']), class: "border-l border-gray-600 px-8 font-semibold", onchange: "clickSubmit();" %>
+          <%= submit_tag "Search", class: "button bg-yellow-300 hover:bg-yellow-200 font-semibold text-black rounded-r px-12 font-bold", id: "search_submit"%>
+        </div>
+      <% end %>
+            <div class="flex flex-wrap mx-1 lg:mx-4 " id="products-container">
+        <%= render @products %>
+      </div>
     </div>
 </section>
 
-<div class="bg-green-600 mx-auto px-4 md:px-12 lg:px-80">
-    <div class="flex flex-wrap mx-1 lg:mx-4">
-        <%= render @products %>
-    </div>
-</div>
+<script>
+  function clickSubmit() {
+    $("#search_submit").trigger.("click");
+  }
+</script>
 
 

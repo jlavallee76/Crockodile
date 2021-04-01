@@ -4,13 +4,14 @@ Rails.application.routes.draw do
 
   root to: "home#main"
 
-  get "/products" => "products#index"
+  get "products", to: "products#index"
   get "cart", to: "cart#show"
+  get "search", to: "products#search"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
   ActiveAdmin.routes(self)
-  resources :products, only: %i[index show]
+  resources :products, only: %i[index show search]
   resources :cart, only: %i[create destroy]
 
   devise_for :users, controllers: {
