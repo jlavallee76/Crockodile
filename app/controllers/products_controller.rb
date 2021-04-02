@@ -4,7 +4,7 @@ class ProductsController < ApplicationController
 
   # GET /products or /products.json
   def index
-    @products = Product.all.order("name asc")
+    @products = Product.all.order("name asc").page(params[:page])
 
     # This was for menu_controller, this might go in home_controller
     @order_item = current_order.order_items.new
