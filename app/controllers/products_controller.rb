@@ -12,7 +12,6 @@ class ProductsController < ApplicationController
 
   def search
     query = params[:search]
-    flash[:notice] = "In search"
     results = Product.where("name LIKE ?", "%#{query}%")
     if params[:filter] == "Select Filter"
       @products = results

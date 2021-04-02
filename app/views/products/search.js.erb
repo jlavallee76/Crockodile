@@ -1,1 +1,5 @@
-$("#products-container").html("<%= render @products %>");
+
+var elementExists = '<%= @products %>'';
+document.getElementById("products-container").innerHTML = '#{<%= render @products %>}';
+console.log(elementExists)
+$('#products-container').html("<%= j render @products %>");
