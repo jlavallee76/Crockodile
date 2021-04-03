@@ -37,13 +37,21 @@
             <option>Standard shipping - $10.00</option>
           </select>
         </div>
-        <div class="py-10">
+        <div class="py-4">
           <label for="promo" class="font-semibold inline-block mb-3 text-sm uppercase">Promo Code</label>
           <input type="text" id="promo" placeholder="Enter your code" class="p-2 text-sm w-full">
         </div>
         <button class="bg-yellow-400 font-semibold hover:bg-yellow-300 rounded px-5 py-2 text-sm text-black uppercase">Apply</button>
         <div class="border-t mt-8">
-          <div class="flex font-semibold justify-between py-6 text-sm uppercase">
+          <div class="flex font-semibold justify-between pt-2 pb-1 text-sm uppercase">
+            <span>PST</span>
+            <span>customer.province_id.pst_tax_rate</span>
+          </div>
+          <div class="flex font-semibold justify-between text-sm uppercase">
+            <span>GST</span>
+            <span>customer.province_id.gst_tax_rate</span>
+          </div>
+          <div class="flex font-semibold justify-between py-4 text-sm uppercase">
             <span>Total cost</span>
             <span><%= number_to_currency current_order.subtotal %></span>
           </div>

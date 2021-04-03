@@ -1,31 +1,46 @@
-<p id="notice"><%= notice %></p>
+<div class="md:flex justify-between py-20 px-10 bg-yellow-300">
+  <div class="md:w-1/2 mb-10 md:mb-0">
+    <h2 class="lg:text-6xl md:text-5xl mb-6">Categories</h2>
+    <p class="mb-6 text-xl">Lorem, ipsum dolor sit amet consectetur adipisicing elit. Dolore accusantium qui perspiciatis cum, aut officiis odit cumque consequuntur facilis, culpa laborum natus doloremque mollitia a quibusdam, illum vitae molestias voluptates.</p>
 
-<h1>Categories</h1>
+    <a href="#" class="inline-block py-3 px-6 text-lg text-gray-50 font-semibold bg-green-800 hover:bg-green-600 transition ease-in duration-200 rounded mr-3">Learn More</a>
+  </div>
+</div>
 
-<table>
-  <thead>
-    <tr>
-      <th>Heading</th>
-      <th>Body</th>
-      <th>Display</th>
-      <th colspan="3"></th>
-    </tr>
-  </thead>
+<div class="flex flex-wrap m-12 lg:mx-4 " id="products-container">
+  <% @categories.each do |category| %>
+    <div class="flex my-1 px-1 w-full flex-col md:w-1/2 lg:my-4 lg:px-4 lg:w-1/3">
+        <!-- Article -->
+        <article class="flex flex-col w-full overflow-hidden rounded-lg shadow-2xl border-4 border-green-700 bg-green-800 h-full transform hover:scale-105 ease-in duration-500">
 
-  <tbody>
-    <% @categories.each do |category| %>
-      <tr>
-        <td><%= category.heading %></td>
-        <td><%= category.body %></td>
-        <td><%= category.display %></td>
-        <td><%= link_to 'Show', category %></td>
-        <td><%= link_to 'Edit', edit_category_path(category) %></td>
-        <td><%= link_to 'Destroy', category, method: :delete, data: { confirm: 'Are you sure?' } %></td>
-      </tr>
-    <% end %>
-  </tbody>
-</table>
+            <a href="#">
+                <img class="w-full" src="https://source.unsplash.com/200x200/?<%= category.heading %> alt="<%= category.heading %>">
+            </a>
 
-<br>
+            <header class="flex items-center justify-between leading-tight px-4 pt-2 md:px-4">
+                <h1 class="text-lg">
+                    <a class="no-underline hover:underline" href="#">
+                        <%= link_to category.heading, category, class:"text-lg font-bold text-yellow-400 inline-block hover:text-green-500 transition ease-in-out duration-200" %>
+                    </a>
+                </h1>
+            </header>
 
-<%= link_to 'New Category', new_category_path %>
+            <p class="py-2 px-4 pt-2 md:px-4 mb-auto "><%= category.body %></p>
+
+            <footer class="flex items-center justify-between leading-none mt-2 p-2 md:p-4 border-t-4 border-yellow-400">
+                <a class="flex items-center no-underline text-black" href="#">
+                    <img alt="Placeholder" class="block rounded-full" src="https://picsum.photos/32/32/?random">
+                    <p class="ml-2 text-md text-yellow-400 hover:text-yellow-300 transition ease-in-out duration-200 font-semibold">
+                        Number Of Options Available: ##
+                    </p>
+                </a>
+            </footer>
+
+            <%# <div class="flex justify-evenly m-4 pt-4 border-t-4 border-yellow-400">
+                <%= link_to "Details", product, class:"text-lg font-semibold inline-block py-2 px-2 bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200"%>
+
+        </article>
+        <!-- END Article -->
+    </div>
+  <% end %>
+</div>

@@ -325,6 +325,7 @@ DEPENDENCIES
   faker
   gravatar_image_tag
   jbuilder (~> 2.7)
+  kaminari
   listen (~> 3.3)
   material_icons
   mini_magick

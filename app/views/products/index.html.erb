@@ -1,5 +1,4 @@
 <div class="md:flex justify-between py-20 px-10 bg-yellow-300">
-  <!-- Left Side Hero -->
   <div class="md:w-1/2 mb-10 md:mb-0">
     <h2 class="lg:text-6xl md:text-5xl mb-6">Meals</h2>
     <p class="mb-6 text-xl">Crockodile meals are vacuum sealed and ready to be emptied into your slow cooker</p>
@@ -15,11 +14,14 @@
           <%= text_field_tag :search, '', class:"w-full h-16 rounded-l focus:outline-none focus:shadow-outline text-xl px-8 shadow-lg", placeholder: "Search...", onkeydown: 'clickSubmit()' %>
           <%= select_tag "filter", options_for_select(['Select Filter', 'Dairy Free', 'Gluten Free', 'Kosher', 'Vegan', 'Vegetarian']), class: "border-l border-gray-600 px-8 font-semibold", onchange: "clickSubmit()" %>
           <%= submit_tag "Search", class: "button bg-yellow-300 hover:bg-yellow-200 font-semibold text-black rounded-r px-12 font-bold", id: "search_submit"%>
-          </div>
-                <div class="flex flex-wrap mx-1 lg:mx-4 " id="products-container">
+        </div>
+        <div class="flex flex-wrap mx-1 lg:mx-4 " id="products-container">
           <%= render @products %>
         </div>
       <% end %>
+      <div class="ml-2 mt-4 font-bold text-yellow-300 text-xl">
+        <%= paginate @products %>
+      </div>
     </div>
 </section>
 

@@ -1,27 +1,14 @@
-# This file should contain all the record creation
-# needed to seed the database with its default values.
-#
-# The data can then be loaded with the bin/rails db:seed
-# command (or created alongside the database with db:setup).
-#
-# Examples:
-#
-#   movies = Movie.create([{ name: 'Star Wars' }, { name: 'Lord of the Rings' }])
-#   Character.create(name: 'Luke', movie: movies.first)
-
-# 676.times do
-#   Product.create(name:           Faker::Commerce.unique.product_name,
-#                  price:          Faker::Commerce.price,
-#                  stock_quantity: Faker::Number.number(digits: 2))
-# end
-
-# Use this Faker for generating categories
-# Faker::Restaurant.type
-
 require "csv"
+require "open-uri"
+require "json"
+
+def fetch_data(url)
+  JSON.parse(open(url).read)
+end
 
 Product.destroy_all
 Category.destroy_all
+Province.destroy_all
 
 Category.create!(heading: "Soup",
                  body:    Faker::Food.description,
@@ -55,7 +42,26 @@ Category.all.each do |category|
   end
 end
 
+provinces = fetch_data("https://api.salestaxapi.ca/v2/province/all")
+provinces.each do |province|
+  gst = 0
+  pst = 0
+  province.each do |props|
+    gst = props["gst"]
+    pst = props["pst"]
+  end
+  Province.create(
+    name:     province[0],
+    gst_rate: gst,
+    pst_rate: pst
+  )
+end
+
 if Rails.env.development?
   AdminUser.create!(email: "admin@example.com", password: "password",
   password_confirmation: "password")
 end
+
+puts "Created #{Category.count} Categories"
+puts "Created #{Product.count} Products"
+puts "Created #{Province.count} Provinces"
