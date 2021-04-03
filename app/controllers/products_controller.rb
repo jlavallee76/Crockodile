@@ -12,12 +12,12 @@ class ProductsController < ApplicationController
 
   def search
     query = params[:search]
-    results = Product.where("name LIKE ?", "%#{query}%")
+    results = Product.where("name LIKE ?", "%#{query}%").page(params[:page])
     if params[:filter] == "Select Filter"
-      @products = results
+      @products = results.page(params[:page])
     else
       symbol = params[:filter].gsub(/ /, "_").downcase!.to_sym
-      @products = results.where(symbol => true)
+      @products = results.where(symbol => true).page(params[:page])
     end
   end
 
