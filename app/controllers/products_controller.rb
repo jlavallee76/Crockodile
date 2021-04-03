@@ -38,29 +38,13 @@ class ProductsController < ApplicationController
   def create
     @product = Product.new(product_params)
     @product.category = Category.find(params[:product][:category_id])
-    respond_to do |format|
-      if @product.save
-        format.html { redirect_to @product, notice: "Product was successfully created." }
-        format.json { render :show, status: :created, location: @product }
-      else
-        format.html { render :new, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
+    create_response
   end
 
   # PATCH/PUT /products/1 or /products/1.json
   def update
     @product.category = Category.find(params[:product][:category_id])
-    respond_to do |format|
-      if @product.update(product_params)
-        format.html { redirect_to @product, notice: "Product was successfully updated." }
-        format.json { render :show, status: :ok, location: @product }
-      else
-        format.html { render :edit, status: :unprocessable_entity }
-        format.json { render json: @product.errors, status: :unprocessable_entity }
-      end
-    end
+    update_reponse
   end
 
   # DELETE /products/1 or /products/1.json
@@ -73,6 +57,30 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def create_response
+    respond_to do |format|
+      if @product.save
+        format.html { redirect_to @product, notice: "Product was successfully created." }
+        format.json { render :show, status: :created, location: @product }
+      else
+        format.html { render :new, status: :unprocessable_entity }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
+
+  def update_reponse
+    respond_to do |format|
+      if @product.update(product_params)
+        format.html { redirect_to @product, notice: "Product was successfully updated." }
+        format.json { render :show, status: :ok, location: @product }
+      else
+        format.html { render :edit, status: :unprocessable_entity }
+        format.json { render json: @product.errors, status: :unprocessable_entity }
+      end
+    end
+  end
 
   # Use callbacks to share common setup or constraints between actions.
   def set_product

@@ -1,5 +1,6 @@
 class Order < ApplicationRecord
-  has_many :order_items
+  has_many :order_items, dependent: :restrict_with_exception
+  has_one :user, dependent: :restrict_with_exception
   before_save :set_subtotal
 
   def subtotal

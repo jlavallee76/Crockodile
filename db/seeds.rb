@@ -3,7 +3,7 @@ require "open-uri"
 require "json"
 
 def fetch_data(url)
-  JSON.parse(open(url).read)
+  JSON.parse(HTTP.get_response(url).read)
 end
 
 Product.destroy_all
@@ -62,6 +62,6 @@ if Rails.env.development?
   password_confirmation: "password")
 end
 
-puts "Created #{Category.count} Categories"
-puts "Created #{Product.count} Products"
-puts "Created #{Province.count} Provinces"
+# puts "Created #{Category.count} Categories"
+# puts "Created #{Product.count} Products"
+# puts "Created #{Province.count} Provinces"

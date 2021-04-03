@@ -1,6 +1,7 @@
 Rails.application.routes.draw do
   resources :categories
   resources :order_items
+  resources :pages, only: [:show]
 
   root to: "home#main"
 
@@ -9,6 +10,7 @@ Rails.application.routes.draw do
   get "search", to: "products#search"
   get "about", to: "pages#about"
   get "contact", to: "pages#contact"
+  # get ":permalink", to: "pages#permalink"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 
