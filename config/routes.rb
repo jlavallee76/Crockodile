@@ -7,6 +7,8 @@ Rails.application.routes.draw do
   get "products", to: "products#index"
   get "cart", to: "cart#show"
   get "search", to: "products#search"
+  get "about", to: "pages#about"
+  get "contact", to: "pages#contact"
 
   devise_for :admin_users, ActiveAdmin::Devise.config
 

@@ -4,7 +4,8 @@
   <div class="flex items-center ml-16">
     <%= link_to image_tag("logo_yellow.png", width: 125, alt:"logo"), root_path, class: "transition ease-in hover:opacity-75 duration-200"   %>
 
-    <a href="<%= root_path %>" class="text-lg font-semibold inline-block ml-6 p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Home</a>
+    <%= link_to "Home", root_path, class:"text-lg font-semibold inline-block ml-6 p-2 pr-4 mr-2 text-gray-50 hover:text-green-400"%>
+
     <a href="<%= products_path %>" class="text-lg font-semibold inline-block p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Meals</a>
     <a href="<%= categories_path %>" class="text-lg font-semibold inline-block p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">Categories</a>
     <a href="#" class="text-lg font-semibold inline-block p-2 pr-4 mr-2 text-gray-50 hover:text-green-400">About</a>
