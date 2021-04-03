@@ -12,7 +12,7 @@ class ProductsController < ApplicationController
 
   def search
     query = params[:search]
-    results = Product.where("name LIKE ?", "%#{query}%").page(params[:page])
+    results = Product.where("name LIKE ?", "%#{query}%").order("name asc").page(params[:page])
     if params[:filter] == "Select Filter"
       @products = results.page(params[:page])
     else

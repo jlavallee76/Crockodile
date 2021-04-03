@@ -6,7 +6,7 @@
     <p class="mb-6 ml-2 text-xl">Take a bite out of cooking!</p>
 
     <%= link_to "Get Started", new_user_registration_path, class:"inline-block py-3 px-6 text-lg text-gray-50 font-semibold bg-green-800 hover:bg-green-600 transition ease-in duration-200 rounded"%>
-    <a href="#" class="inline-block py-3 px-6 text-lg text-gray-50 font-semibold bg-green-800 hover:bg-green-600 transition ease-in duration-200 rounded mr-3">Learn More</a>
+    <a href="about" class="inline-block py-3 px-6 text-lg text-gray-50 font-semibold bg-green-800 hover:bg-green-600 transition ease-in duration-200 rounded mr-3">Learn More</a>
   </div>
 
   <!-- Left Side Hero -->
@@ -20,8 +20,8 @@
   <div class="flex w-3/4 mr-4"><%= render @products %></div>
   <!-- Left Side Hero -->
   <div class="md:w-1/4 mb-10 md:mb-0">
-    <h2 class="lg:text-6xl md:text-5xl ml-3 mb-6 text-green-800">Featured Meals</h2>
-    <%= link_to "See More", products_path, class:"inline-block py-3 px-6 ml-3 text-lg text-black font-semibold bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200" %>
+    <h2 class="lg:text-6xl md:text-5xl ml-3 mb-6 text-yellow-400">Featured Meals</h2>
+    <%= link_to "See More", products_path, class:"font-bold inline-block py-3 px-6 ml-3 text-lg text-black font-semibold bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200" %>
   </div>
   <!-- Left Side Hero -->
   <%# <div class="md:w-1/4">
