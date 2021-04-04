@@ -1,5 +1,5 @@
 ActiveAdmin.register Product do
-  permit_params :name, :description, :price, :image,
+  permit_params :name, :category_id, :description, :price, :image,
                 :dairy_free, :gluten_free, :kosher,
                 :peanut_free, :vegan, :vegetarian,
                 :available, :featured
