@@ -5,6 +5,12 @@ Rails.application.routes.draw do
 
   root to: "home#main"
 
+  scope "/checkout" do
+    post "create", to: "checkout#create", as: "checkout_create"
+    get "cancel", to: "checkout#cancel", as: "checkout_cancel"
+    get "success", to: "checkout#success", as: "checkout_success"
+  end
+
   get "products", to: "products#index"
   get "cart", to: "cart#show"
   get "search", to: "products#search"

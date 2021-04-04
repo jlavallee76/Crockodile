@@ -50,6 +50,7 @@
                     <%= f.hidden_field :quantity, value: 1, min: 1 %>
                     <%= f.submit "Add", class: "text-lg font-bold text-green-800 inline-block py-2 px-4 bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200" %>
                 <% end %>
+                    <%= button_to "Buy Now", checkout_create_path, method: :post, params: {id: product.id}, class: "text-lg font-bold text-green-800 inline-block py-2 px-4 bg-yellow-400 rounded hover:bg-yellow-300 transition ease-in duration-200", remote: true %>
             <% end %>
         </footer>
 

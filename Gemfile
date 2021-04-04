@@ -68,4 +68,5 @@ gem 'faker'
 gem 'activeadmin'
 gem 'material_icons'
 gem 'kaminari'
+gem 'stripe'
 

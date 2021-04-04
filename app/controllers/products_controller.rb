@@ -13,12 +13,7 @@ class ProductsController < ApplicationController
   def search
     query = params[:search]
     results = Product.where("name LIKE ?", "%#{query}%").order("name asc").page(params[:page])
-    if params[:filter] == "Select Filter"
-      @products = results.page(params[:page])
-    else
-      symbol = params[:filter].gsub(/ /, "_").downcase!.to_sym
-      @products = results.where(symbol => true).page(params[:page])
-    end
+    search_filter(results)
   end
 
   # GET /products/1 or /products/1.json
@@ -57,6 +52,15 @@ class ProductsController < ApplicationController
   end
 
   private
+
+  def search_filter(results)
+    if params[:filter] == "Select Filter"
+      @products = results.page(params[:page])
+    else
+      symbol = params[:filter].gsub(/ /, "_").downcase!.to_sym
+      @products = results.where(symbol => true).page(params[:page])
+    end
+  end
 
   def create_response
     respond_to do |format|

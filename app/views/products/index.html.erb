@@ -15,10 +15,10 @@
           <%= select_tag "filter", options_for_select(['Select Filter', 'Dairy Free', 'Gluten Free', 'Kosher', 'Vegan', 'Vegetarian']), class: "border-l border-gray-600 px-8 font-semibold", onchange: "clickSubmit();" %>
           <%= submit_tag "Search", class: "button bg-yellow-300 hover:bg-yellow-200 text-green-800 rounded-r px-12 font-bold text-lg", id: "search_submit"%>
         </div>
-        <div class="flex flex-wrap mx-1 lg:mx-4 " id="products-container">
-          <%= render @products %>
-        </div>
       <% end %>
+      <div class="flex flex-wrap mx-1 lg:mx-4 " id="products-container">
+        <%= render @products %>
+      </div>
       <div class="ml-2 mt-4 font-bold text-yellow-300 text-xl" id="paginate-container">
         <%= paginate @products %>
       </div>
