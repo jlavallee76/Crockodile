@@ -123,6 +123,7 @@ ActiveRecord::Schema.define(version: 2021_04_03_134845) do
     t.string "name"
     t.decimal "pst_rate"
     t.decimal "gst_rate"
+    t.decimal "hst_rate"
     t.text "notes"
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
@@ -137,7 +138,12 @@ ActiveRecord::Schema.define(version: 2021_04_03_134845) do
     t.datetime "created_at", precision: 6, null: false
     t.datetime "updated_at", precision: 6, null: false
     t.string "username"
+    t.string "postal"
+    t.string "city"
+    t.string "street"
+    t.integer "province_id", default: 1, null: false
     t.index ["email"], name: "index_users_on_email", unique: true
+    t.index ["province_id"], name: "index_users_on_province_id"
     t.index ["reset_password_token"], name: "index_users_on_reset_password_token", unique: true
   end
 
@@ -146,4 +152,5 @@ ActiveRecord::Schema.define(version: 2021_04_03_134845) do
   add_foreign_key "order_items", "orders"
   add_foreign_key "order_items", "products"
   add_foreign_key "products", "categories"
+  add_foreign_key "users", "provinces"
 end

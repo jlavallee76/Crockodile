@@ -1,31 +1,66 @@
-<h2>Edit <%= resource_name.to_s.humanize %></h2>
-
 <%= simple_form_for(resource, as: resource_name, url: registration_path(resource_name), html: { method: :put }) do |f| %>
   <%= f.error_notification %>
+    <div class="bg-grey-lighter min-h-screen flex flex-col">
+      <div class="container max-w-sm mx-auto flex-1 flex flex-col items-center justify-center px-2">
+        <div class="bg-white border-green-800 border-4 border-opacity-75 px-6 py-8 rounded shadow-lg text-black w-full">
+          <h1 class="mb-8 text-3xl text-center">Account Details</h1>
+          <div class="form-inputs">
+            <%= f.input :email,
+                    required: false,
+                    label: "email",
+                    autofocus: true,
+                    input_html: { autocomplete: "email",
+                                  class: "block border border-green-800 focus:border-green-600 w-full p-3 rounded mb-4",
+                                  placeholder: "Email" } %>
 
-  <div class="form-inputs">
-    <%= f.input :email, required: true, autofocus: true %>
+            <%= f.input :city,
+                    required: false,
+                    label: "city",
+                    autofocus: true,
+                    input_html: { autocomplete: "city",
+                                  class: "block border border-green-800 focus:border-green-600 w-full p-3 rounded mb-4",
+                                  placeholder: "city" } %>
 
-    <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
-      <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
-    <% end %>
+            <%= f.input :province_id,
+                    label: "province",
+                    collection: Province.all,
+                    selected: current_user.province.id,
+                    input_html: { class: "block border border-green-800 focus:border-green-600 w-full p-3 rounded mb-4"} %>
 
-    <%= f.input :password,
-                hint: "leave it blank if you don't want to change it",
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :password_confirmation,
-                required: false,
-                input_html: { autocomplete: "new-password" } %>
-    <%= f.input :current_password,
-                hint: "we need your current password to confirm your changes",
-                required: true,
-                input_html: { autocomplete: "current-password" } %>
-  </div>
+            <%= f.input :postal,
+                    required: false,
+                    label: "postal code",
+                    autofocus: true,
+                    input_html: { autocomplete: "postal",
+                                  class: "block border border-green-800 focus:border-green-600 w-full p-3 rounded mb-4",
+                                  placeholder: "postal code" } %>
 
-  <div class="form-actions">
-    <%= f.button :submit, "Update" %>
-  </div>
+          <% if devise_mapping.confirmable? && resource.pending_reconfirmation? %>
+            <p>Currently waiting confirmation for: <%= resource.unconfirmed_email %></p>
+          <% end %>
+
+          <%= f.input :password,
+                      hint: "leave it blank if you don't want to change it",
+                      required: false,
+                      input_html: { autocomplete: "new-password",
+                                    class: "block border border-green-800 focus:border-green-600 w-full p-3 rounded mb-4" } %>
+          <%= f.input :password_confirmation,
+                      required: false,
+                      input_html: { autocomplete: "new-password",
+                      class: "block border border-green-800 focus:border-green-600 w-full p-3 rounded mb-4" } %>
+          <%= f.input :current_password,
+                      hint: "we need your current password to confirm your changes",
+                      required: true,
+                      input_html: { autocomplete: "current-password",
+                      class: "block border border-green-800 focus:border-green-600 w-full p-3 rounded mb-4" } %>
+        </div>
+
+        <div class="form-actions">
+          <%= f.button :submit, "Update", class:"text-yellow-300 font-bold inline-block mt-2 py-2 px-4 bg-green-800 rounded hover:bg-green600 transition ease-in duration-200" %>
+        </div>
+        </div>
+        </div>
+        </div>
 <% end %>
 
 <h3>Cancel my account</h3>

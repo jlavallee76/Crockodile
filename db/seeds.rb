@@ -3,7 +3,7 @@ require "open-uri"
 require "json"
 
 def fetch_data(url)
-  JSON.parse(HTTP.get_response(url).read)
+  JSON.parse(URI.open(url).read)
 end
 
 Product.destroy_all
@@ -46,14 +46,17 @@ provinces = fetch_data("https://api.salestaxapi.ca/v2/province/all")
 provinces.each do |province|
   gst = 0
   pst = 0
+  hst = 0
   province.each do |props|
     gst = props["gst"]
     pst = props["pst"]
+    hst = props["hst"]
   end
   Province.create(
-    name:     province[0],
+    name:     province[0].upcase,
     gst_rate: gst,
-    pst_rate: pst
+    pst_rate: pst,
+    hst_rate: hst
   )
 end
 
@@ -62,6 +65,6 @@ if Rails.env.development?
   password_confirmation: "password")
 end
 
-# puts "Created #{Category.count} Categories"
-# puts "Created #{Product.count} Products"
-# puts "Created #{Province.count} Provinces"
+puts "Created #{Category.count} Categories"
+puts "Created #{Product.count} Products"
+puts "Created #{Province.count} Provinces"
